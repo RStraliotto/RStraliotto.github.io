@@ -71,12 +71,16 @@ html {
 
 .bg {
   background-image: url(../images/natal.png);
-  height: 100%;
-  width: 100%;
+  max-width:100%;
+	height:auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   
+}
+.img-fluid { 
+  max-width: 100%;
+  height: auto;
 }
 
 #basixCanv{
