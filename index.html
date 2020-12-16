@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-br" class="bg">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,8 @@
     <link rel="stylesheet" href="css/policy.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
 <title>Rômulo Straliotto - Developer</title>
+
+
 </head>
 
 <body>
@@ -20,11 +23,72 @@
                   <div class="container2"><h2>/</h2></div>
                   <div class="container3"><h2>/</h2></div>
         </div>
-      
+        <canvas id='basixCanv'>
+    
+        </canvas> 
 </body>
 
 
 
+<script>
+     
+  var c = document.getElementById('basixCanv'), stvv = c.getContext("2d");
+  var w = c.width, 
+      h = c.height;
+  
+  var speed = 5;
+  var thickness = 600;
+  
+  createSnow();
+  function createSnow() {
+    var snow, arr = [];
+    var num = thickness, tsc = 1, sp = speed;
+  
+    var sc = 0.6, t = 0, mv = 20, min = 1;
+      for (var i = 0; i < num; ++i) {
+        snow = new Flake();
+        snow.y = Math.random() * (h + 50);
+        snow.x = Math.random() * w;
+        snow.t = Math.random() * (Math.PI * 1.5);
+        snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
+        snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
+        snow.sp = snow.sp < min ? min : snow.sp;
+        arr.push(snow);
+      }
+  
+    go();
+    function go(){
+      window.requestAnimationFrame(go);
+        stvv.clearRect(0, 0, w, h);
+        stvv.fillRect(0, 0, w, h);
+        stvv.fill();
+          for (var i = 0; i < arr.length; ++i) {
+            f = arr[i];
+            f.t += .05;
+            f.t = f.t >= Math.PI * 2 ? 0 : f.t;
+            f.y += f.sp;
+            f.x += Math.sin(f.t * tsc) * (f.sz * .3);
+            if (f.y > h + 50) f.y = -10 - Math.random() * mv;
+            if (f.x > w + mv) f.x = - mv;
+            if (f.x < - mv) f.x = w + mv;
+            f.draw();
+        }
+   }
+   function Flake() {
+     this.draw = function() {
+        this.g = stvv.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
+        this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
+        this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
+        stvv.moveTo(this.x, this.y);
+        stvv.fillStyle = this.g;
+        stvv.beginPath();
+        stvv.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
+        stvv.fill();
+      }
+    }
+  }
+ 
+  </script>
 
 
 
@@ -56,4 +120,6 @@
     </script>
 
     <!--fim do script de cookies-->
+    
+      
 </html>
