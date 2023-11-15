@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+		/* Estilo para o título */
+        h1 {
+            text-align: center;
+        }
+        /* Estilo para as colunas */
+        .coluna {
+            width: 100%; /* Alterado para ocupar 100% da largura */
+            margin-bottom: 20px; /* Espaço entre as colunas */
+            background-color: #f2f2f2;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Estilo para limpar a flutuação e evitar quebras indesejadas */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Estilo para tornar os cards clicáveis */
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Estilo para o iframe */
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%; /* proporção de 16:9 para respeitar o aspect ratio dos vídeos */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <title>Cards Flexíveis com Embeds</title>
+</head>
+<body>
+
+	 <!-- Título -->
+    <h1>STRATECH - MONITOR DE STATUS VTEX</h1>
+
+    <!-- Linha 1 -->
+    <a href="https://healthcheck.vtex.com/" target="_blank" class="card-link">
+        <div class="coluna">
+            <h2>Site de Health Check VTEX</h2>
+            <div class="embed-container">
+                <iframe src="https://healthcheck.vtex.com/" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://status.vtex.com/" target="_blank" class="card-link">
+        <div class="coluna">
+            <h2>Status VTEX</h2>
+            <div class="embed-container">
+                <iframe src="https://status.vtex.com/" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </a>
+
+    <!-- Limpar flutuação após a primeira linha -->
+    <div class="clearfix"></div>
+
+    <!-- Limpar flutuação após a segunda linha -->
+    <div class="clearfix"></div>
+
+</body>
+</html>
