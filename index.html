@@ -1,131 +1,84 @@
 <!DOCTYPE html>
-
-<html lang="pt-br" class="bg">
+<html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/policy.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
-<title>Ho Ho Ho 🎅 Feliz Natal!</title>
-<style>
-  img{
-    max-width:100%;
-    height:auto;
-  }
-  </style>
+    <style>
 
+		/* Estilo para o título */
+        h1 {
+            text-align: center;
+        }
+        /* Estilo para as colunas */
+        .coluna {
+            width: 100%; /* Alterado para ocupar 100% da largura */
+            margin-bottom: 20px; /* Espaço entre as colunas */
+            background-color: #f2f2f2;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Estilo para limpar a flutuação e evitar quebras indesejadas */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Estilo para tornar os cards clicáveis */
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Estilo para o iframe */
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%; /* proporção de 16:9 para respeitar o aspect ratio dos vídeos */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <title>Cards Flexíveis com Embeds</title>
 </head>
-
 <body>
- 
 
-        <div class="container">
-              <div class="container0">
-                <h1>RSTRALIOTTO</h1>
-              </div>
-                  <div class="container1"><h2>/</h2></div>
-                  <div class="container2"><h2>/</h2></div>
-                  <div class="container3"><h2>/</h2></div>
+	 <!-- Título -->
+    <h1>STRATECH - MONITOR DE STATUS VTEX</h1>
+
+    <!-- Linha 1 -->
+    <a href="https://healthcheck.vtex.com/" target="_blank" class="card-link">
+        <div class="coluna">
+            <h2>Site de Health Check VTEX</h2>
+            <div class="embed-container">
+                <iframe src="https://healthcheck.vtex.com/" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-        <canvas id='basixCanv'>
-    
-        </canvas> 
+    </a>
+
+    <a href="https://status.vtex.com/" target="_blank" class="card-link">
+        <div class="coluna">
+            <h2>Status VTEX</h2>
+            <div class="embed-container">
+                <iframe src="https://status.vtex.com/" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </a>
+
+    <!-- Limpar flutuação após a primeira linha -->
+    <div class="clearfix"></div>
+
+    <!-- Limpar flutuação após a segunda linha -->
+    <div class="clearfix"></div>
+
 </body>
-
-
-
-<script>
-     
-  var c = document.getElementById('basixCanv'), stvv = c.getContext("2d");
-  var w = c.width, 
-      h = c.height;
-  
-  var speed = 5;
-  var thickness = 600;
-  
-  createSnow();
-  function createSnow() {
-    var snow, arr = [];
-    var num = thickness, tsc = 1, sp = speed;
-  
-    var sc = 0.6, t = 0, mv = 20, min = 1;
-      for (var i = 0; i < num; ++i) {
-        snow = new Flake();
-        snow.y = Math.random() * (h + 50);
-        snow.x = Math.random() * w;
-        snow.t = Math.random() * (Math.PI * 1.5);
-        snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
-        snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
-        snow.sp = snow.sp < min ? min : snow.sp;
-        arr.push(snow);
-      }
-  
-    go();
-    function go(){
-      window.requestAnimationFrame(go);
-        stvv.clearRect(0, 0, w, h);
-        stvv.fillRect(0, 0, w, h);
-        stvv.fill();
-          for (var i = 0; i < arr.length; ++i) {
-            f = arr[i];
-            f.t += .05;
-            f.t = f.t >= Math.PI * 2 ? 0 : f.t;
-            f.y += f.sp;
-            f.x += Math.sin(f.t * tsc) * (f.sz * .3);
-            if (f.y > h + 50) f.y = -10 - Math.random() * mv;
-            if (f.x > w + mv) f.x = - mv;
-            if (f.x < - mv) f.x = w + mv;
-            f.draw();
-        }
-   }
-   function Flake() {
-     this.draw = function() {
-        this.g = stvv.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
-        this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
-        this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
-        stvv.moveTo(this.x, this.y);
-        stvv.fillStyle = this.g;
-        stvv.beginPath();
-        stvv.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
-        stvv.fill();
-      }
-    }
-  }
- 
-  </script>
-
-
-
-<!--script de cookies-->
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#000000",
-          "text": "#faf7f7"
-        },
-        "button": {
-          "background": "#1d97cc",
-          "text": "#000000",
-          "border-radius": "25px;"
-          
-        }
-      },
-      
-      "content": {
-        "message": "Este website usa cookies. Ao continuar navegando no site, você concorda com o uso de cookies.",
-        "dismiss": "Aceitar Cookies",
-        "link": "Política de Cookies e Privacy.",
-        "href": "/policy.html",
-        
-      }
-    });
-    </script>
-
-    <!--fim do script de cookies-->
-    
-      
 </html>
